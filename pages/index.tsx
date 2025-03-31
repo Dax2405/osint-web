@@ -14,7 +14,7 @@ export default function IndexPage() {
 
   const handleSubmitName = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await fetch("https://dax-ec.ru/osint-api/get_info_by_name", {
+    const response = await fetch("http://localhost:5056/get_info_by_name", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function IndexPage() {
   const handleSubmitPlate = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch("https://dax-ec.ru/osint-api/get_info_by_plate", {
+    const response = await fetch("http://localhost:5056/get_info_by_plate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,6 +45,7 @@ export default function IndexPage() {
       console.log(data2);
       if (data2[0]) {
         console.log("entre");
+        console.log(data2[0]);
         setCarData(data2[0]);
         if (data2[1]) {
           setData(data2[1]);
@@ -84,7 +85,7 @@ export default function IndexPage() {
           <Input
             value={plate}
             onChange={(e) => setPlate(e.target.value)}
-            placeholder="Placa"
+            placeholder="Placa (EN MAYUSCULAS)"
           />
           <Button type="submit" color="primary">
             Consultar
